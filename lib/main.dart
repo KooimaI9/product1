@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app1/app_background.dart';
+import 'package:flutter_app1/online.dart';
+import 'package:flutter_app1/offline.dart';
+import 'package:flutter_app1/account.dart';
 
 void main() => runApp(
       MaterialApp(
@@ -40,11 +43,24 @@ class _State extends State<MyApp> {
                         width: 30,
                       ),
                       SizedBox(
-                        width: 40,
-                        height: 40,
-                        child: FittedBox(
-                            fit: BoxFit.fill, child: Icon(Icons.person)),
-                      ),
+                          child: Column(children: [
+                        IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => accountPage()),
+                            );
+                          },
+                          icon: Icon(
+                            Icons.person,
+                            size: 40,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                      ])),
                       SizedBox(
                         width: 45,
                       ),
@@ -56,7 +72,7 @@ class _State extends State<MyApp> {
                         ),
                       ),
                       SizedBox(
-                        width: 85,
+                        width: 70,
                       ),
                       SizedBox(
                         width: 35,
@@ -122,9 +138,16 @@ class _State extends State<MyApp> {
                             fontSize: 30,
                           ),
                         ),
-                        color: Colors.orange,
+                        splashColor: Colors.orange,
+                        color: Colors.grey,
                         textColor: Colors.white,
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => onlinePage()),
+                          );
+                        },
                       ),
                     ),
                     SizedBox(
@@ -141,9 +164,16 @@ class _State extends State<MyApp> {
                             fontSize: 30,
                           ),
                         ),
-                        color: Colors.orange,
+                        splashColor: Colors.orange,
+                        color: Colors.grey,
                         textColor: Colors.white,
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => offlinePage()),
+                          );
+                        },
                       ),
                     ),
                   ]),
