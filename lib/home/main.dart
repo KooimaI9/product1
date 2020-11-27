@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app1/app_background.dart';
-import 'package:flutter_app1/online.dart';
-import 'package:flutter_app1/offline.dart';
-import 'package:flutter_app1/account.dart';
+import 'package:flutter_app1/home/app_background.dart';
+import 'package:flutter_app1/online/online.dart';
+import 'package:flutter_app1/offline/offline.dart';
+import 'package:flutter_app1/account/account.dart';
 
 void main() => runApp(
       MaterialApp(
