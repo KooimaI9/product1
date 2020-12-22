@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'bord/definition_layout.dart';
+import 'bord/intializer.dart';
 
 class offlinePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    initializeVerticalList();
+    initializeHorizontalList();
+    initializeEntireList();
     return Scaffold(
       body: Center(
         child: Column(children: [
@@ -20,6 +25,9 @@ class offlinePage extends StatelessWidget {
                   IconButton(
                     onPressed: () {
                       Navigator.pop(context);
+                      entireList.clear();
+                      horizontalList.clear();
+                      verticalList.clear();
                     },
                     icon: Icon(
                       Icons.arrow_back_ios,
@@ -88,9 +96,15 @@ class offlinePage extends StatelessWidget {
             height: 20,
           ),
           Container(
-            height: 350,
-            width: 350,
-            color: Colors.greenAccent,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: entireList),
+              ],
+            ),
           ),
           SizedBox(
             height: 20,
