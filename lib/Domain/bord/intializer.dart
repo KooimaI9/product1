@@ -24,7 +24,7 @@ void initializer(){
       }
       horizontalX = 0 ;
       horizontalY ++ ;
-      
+
       entireList.add(RowWidget(horizontalList));
       horizontalList.clear();
     }else{
