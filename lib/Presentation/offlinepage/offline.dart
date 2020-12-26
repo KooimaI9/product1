@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app1/Domain/bord/definition_layout.dart';
-import 'package:flutter_app1/Domain/bord/intializer.dart';
+import 'package:flutter_app1/Domain/color_model.dart';
+import 'package:flutter_app1/Domain/component.dart';
+import 'package:flutter_app1/Domain/intializer.dart';
+import 'package:provider/provider.dart';
 
 class OffLinePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-   initializer();
+    entireList.clear();
+    horizontalList.clear();
+    verticalList.clear();
+    initializer();
     return SafeArea(
       child: Scaffold(
         body: Center(
@@ -21,19 +26,16 @@ class OffLinePage extends StatelessWidget {
                   ),
                   SizedBox(
                       child: Column(children: [
-                    IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                        entireList.clear();
-                        horizontalList.clear();
-                        verticalList.clear();
+                        IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
                       },
-                      icon: Icon(
-                        Icons.arrow_back_ios,
-                        size: 20,
+                          icon: Icon(
+                            Icons.arrow_back_ios,
+                            size: 20,
                       ),
                     ),
-                    SizedBox(
+                        SizedBox(
                       height: 1,
                     ),
                   ])),
@@ -63,29 +65,31 @@ class OffLinePage extends StatelessWidget {
               child: Container(
                 child:
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  SizedBox(
-                    width: 5,
+                      SizedBox(
+                        width: 5,
                   ),
-                  Container(
-                    width: 350,
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black87, width: 5)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          child: Text(
-                            "Player1",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
+                      Container(
+                        width: 350,
+                        decoration:
+                        BoxDecoration(
+                            border: Border.all(color: Colors.black87, width: 5)),
+                      child:
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              child: Text(
+                                "Player1",
+                                 style: TextStyle(
+                                 fontWeight: FontWeight.bold,
+                                   fontSize: 20,
                             ),
                           ),
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(
+                      SizedBox(
                     width: 5,
                   ),
                 ]),
@@ -95,14 +99,21 @@ class OffLinePage extends StatelessWidget {
               height: 20,
             ),
             Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: entireList),
+              child: MultiProvider(
+                providers: [
+                  ChangeNotifierProvider<VerticalLineColorDataPro>(create: (context)=>VerticalLineColorDataPro()),
+                  ChangeNotifierProvider<HorizontalLineColorDataPro>(create: (context)=>HorizontalLineColorDataPro()),
+                  ChangeNotifierProvider<BoxColorDataPro>(create: (context)=>BoxColorDataPro()),
                 ],
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: entireList),
+                  ],
+                ),
               ),
             ),
             SizedBox(
@@ -112,20 +123,22 @@ class OffLinePage extends StatelessWidget {
               child: Container(
                 child:
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  SizedBox(
-                    width: 5,
+                      SizedBox(
+                        width: 5,
                   ),
-                  Container(
-                    width: 350,
-                    decoration: BoxDecoration(
+                      Container(
+                        width: 350,
+                        decoration: BoxDecoration(
                         border: Border.all(color: Colors.black87, width: 5)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          child: Text(
-                            "Player2",
-                            style: TextStyle(
+                        child:
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                          Container(
+                            child:
+                            Text(
+                              "Player2",
+                              style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
                             ),
@@ -134,8 +147,8 @@ class OffLinePage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    width: 5,
+                     SizedBox(
+                       width: 5,
                   ),
                 ]),
               ),
